@@ -18,43 +18,43 @@ class Dice {
   //Draw method. Draws the dice in a line.
   public void draw(int x, int y, int size) {
 
-    fill(dieColor);
+    fill(dieColor); 
     rect(x, y, size, size);
     
     fill(eyeColor);
-    switch(rollInt) {
+    switch(rollInt) { // Switch draws the eyes on the dice, depending on the value.
     case 1:
-      circle(x, y, 20);
+      circle(x, y, size/5);
       break;
     case 2:
-      circle(x-(size/4), y-(size/4), 20);
-      circle(x+(size/4), y+(size/4), 20);
+      circle(x-(size/4), y-(size/4), size/5);
+      circle(x+(size/4), y+(size/4), size/5);
       break;
     case 3:
-      circle(x-(size/4), y-(size/4), 20);
-      circle(x+(size/4), y+(size/4), 20);
-      circle(x, y, 20);
+      circle(x-(size/4), y-(size/4), size/5);
+      circle(x+(size/4), y+(size/4), size/5);
+      circle(x, y, size/5);
       break;
     case 4:
       circle(x-(size/4), y-(size/4), size/5);
-      circle(x+(size/4), y+(size/4), 20);
-      circle(x+(size/4), y-(size/4), 20);
-      circle(x-(size/4), y+(size/4), 20);
+      circle(x+(size/4), y+(size/4), size/5);
+      circle(x+(size/4), y-(size/4), size/5);
+      circle(x-(size/4), y+(size/4), size/5);
       break;
     case 5:
-      circle(x-(size/4), y-(size/4), 20);
-      circle(x+(size/4), y+(size/4), 20);
-      circle(x+(size/4), y-(size/4), 20);
-      circle(x-(size/4), y+(size/4), 20);
-      circle(x, y, 20);
+      circle(x-(size/4), y-(size/4), size/5);
+      circle(x+(size/4), y+(size/4), size/5);
+      circle(x+(size/4), y-(size/4), size/5);
+      circle(x-(size/4), y+(size/4), size/5);
+      circle(x, y, size/5);
       break;
     case 6:
-      circle(x-(size/4), y-(size/4), 20);
-      circle(x+(size/4), y+(size/4), 20);
-      circle(x+(size/4), y-(size/4), 20);
-      circle(x-(size/4), y+(size/4), 20);
-      circle(x, y-(size/4), 20);
-      circle(x, y+(size/4), 20);
+      circle(x-(size/4), y-(size/4), size/5);
+      circle(x+(size/4), y+(size/4), size/5);
+      circle(x+(size/4), y-(size/4), size/5);
+      circle(x-(size/4), y+(size/4), size/5);
+      circle(x, y-(size/4), size/5);
+      circle(x, y+(size/4), size/5);
       break;
     }
   }

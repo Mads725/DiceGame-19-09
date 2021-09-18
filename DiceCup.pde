@@ -1,16 +1,16 @@
 class DiceCup {
 
-  final int arraySize = 50;
+  final int arraySize = 50; // Max number of dice that can be created.
   int pos = 0;
-  Dice[] dice = new Dice[arraySize];
-  Dice[] diceSort = new Dice[arraySize];
+  Dice[] dice = new Dice[arraySize]; //The array with the values that have been rolled.
+  Dice[] diceSort = new Dice[arraySize]; //The sorted array. eksample: [1,1,1,2,2,2,3,3,3,4,4,4,4,4,5,5,5,6,6,6,6,6,].
 
   //Construcktor
   public DiceCup() {
-    //Dice[] dice = new Dice[10];
+    //Dice[] dice = new Dice[10]; 
   }
 
-  //add Dice method. Adds a new random die to the cup.
+  //add dice method. Adds a new random die to the cup.
   void addDie() {
     color c1 = color((int)random(0, 255), (int)random(0, 255), (int)random(0, 255));
     color c2 = color((int)random(0, 255), (int)random(0, 255), (int)random(0, 255));
@@ -28,9 +28,10 @@ class DiceCup {
     }
   }
 
-  void sortArrayTest() {
-    int arrayPos = 0;
-    for (int i = 0; i<dc.dice.length; i++) {
+  void sortArray() { // Sorts the dice in order of their value.
+    int arrayPos = 0; //This is the position in the sorted array where new dice gets added to.
+    for (int i = 0; i<dc.dice.length; i++) { //First forLoop looks for all ones in the first array,
+                                             //and adds them to the sorted array.
       if (dice[i]!=null) {
         if (dc.dice[i].rollInt==1) {
           dc.diceSort[arrayPos].rollInt=1;
@@ -38,7 +39,8 @@ class DiceCup {
         }
       }
     }
-    for (int i = 0; i<dc.dice.length; i++) {
+    for (int i = 0; i<dc.dice.length; i++) {//Second forLoop looks for all twos in the first array,
+                                            //and adds them to the sorted array.
       if (dice[i]!=null) {
         if (dc.dice[i].rollInt==2) {
           dc.diceSort[arrayPos].rollInt=2;
@@ -70,7 +72,7 @@ class DiceCup {
         }
       }
     }
-    for (int i = 0; i<dc.dice.length; i++) {
+    for (int i = 0; i<dc.dice.length; i++) {//The sixed array looks for all sixes and adds them to the sorted array.
       if (dice[i]!=null) {
         if (dc.dice[i].rollInt==6) {
           dc.diceSort[arrayPos].rollInt=6;
@@ -84,23 +86,24 @@ class DiceCup {
   void draw(int x, int y, int size) {
     background(255);
     
-    int prevNum = dc.diceSort[0].rollInt;
+    int prevNum = dc.diceSort[0].rollInt; //Sets the prevNum to be the value of first dice in the sorted array.
     
-    int yPos = y;
-    int xPos1 = x; 
+    int yPos = y;  
+    int xPos1 = x;
     int xPos2 = x; 
-    int xPos3 = x;
-    int xPos4 = x;
-    int xPos5 = x;
-    int xPos6 = x;
+    int xPos3 = x; 
+    int xPos4 = x; 
+    int xPos5 = x; 
+    int xPos6 = x; 
 
-    for (int i=0; i<dc.dice.length; i++) {
+    for (int i=0; i<dc.dice.length; i++) { //Draws the dice
       if (dc.dice[i]!=null) {
-        if(dc.diceSort[i].rollInt!=prevNum){
+        if(dc.diceSort[i].rollInt!=prevNum){ //When the number changces in the sorted array, 
+        // the new dice will be draw on a new line. [1,1,1,1,1,(2),2,2,2,...] new line.
          yPos=yPos+size+(size/5);
          prevNum=dc.diceSort[i].rollInt;
         }
-        switch(dc.diceSort[i].rollInt) {
+        switch(dc.diceSort[i].rollInt) { //Draws the dice on each line and incements by 1,5 dice every new dice.
         case 1:
           dc.diceSort[i].draw(xPos1, yPos, size);
           xPos1=xPos1+size+(size/2);
